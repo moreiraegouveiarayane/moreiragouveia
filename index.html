@@ -872,23 +872,26 @@ const BATERIAS = {
     blocos:[
       {id:'dinamoMI', titulo:'Dinamometria — Membros inferiores', desc:'Força isométrica máxima em kgf. Maior é melhor. Preencha os grupos avaliados.',
        campos:[
-         {key:'extJoelho',  label:'Extensores de joelho', unidade:'kgf', side:true, direcao:'up', chart:true},
-         {key:'flexJoelho', label:'Flexores de joelho', unidade:'kgf', side:true, direcao:'up', chart:true},
          {key:'abdQuadril', label:'Abdutores de quadril', unidade:'kgf', side:true, direcao:'up', chart:true},
          {key:'aduQuadril', label:'Adutores de quadril', unidade:'kgf', side:true, direcao:'up', chart:true},
-         {key:'extQuadril', label:'Extensores de quadril', unidade:'kgf', side:true, direcao:'up', chart:false},
-         {key:'flexQuadril', label:'Flexores de quadril', unidade:'kgf', side:true, direcao:'up', chart:false},
-         {key:'flexPlantar', label:'Flexores plantares (panturrilha)', unidade:'kgf', side:true, direcao:'up', chart:false},
-         {key:'dorsiflexao', label:'Dorsiflexores de tornozelo', unidade:'kgf', side:true, direcao:'up', chart:false},
+         {key:'flexQuadril', label:'Flexores de quadril', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'extQuadril', label:'Extensores de quadril', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'flexJoelho', label:'Flexores de joelho', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'extJoelho',  label:'Extensores de joelho', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'dorsiflexao', label:'Dorsiflexores de tornozelo', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'flexPlantar', label:'Flexores plantares de tornozelo', unidade:'kgf', side:true, direcao:'up', chart:true},
        ]},
       {id:'dinamoMS', titulo:'Dinamometria — Membros superiores', desc:'Força isométrica máxima em kgf. Maior é melhor.',
        campos:[
          {key:'preensaoMS', label:'Preensão manual (handgrip)', unidade:'kgf', side:true, direcao:'up', chart:true},
-         {key:'rotIntOmbro', label:'Rotadores internos de ombro', unidade:'kgf', side:true, direcao:'up', chart:false},
-         {key:'rotExtOmbro', label:'Rotadores externos de ombro', unidade:'kgf', side:true, direcao:'up', chart:false},
-         {key:'abdOmbro', label:'Abdutores de ombro', unidade:'kgf', side:true, direcao:'up', chart:false},
-         {key:'flexCotovelo', label:'Flexores de cotovelo', unidade:'kgf', side:true, direcao:'up', chart:false},
-         {key:'extCotovelo', label:'Extensores de cotovelo', unidade:'kgf', side:true, direcao:'up', chart:false},
+         {key:'abdOmbro', label:'Abdutores de ombro', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'aduOmbro', label:'Adutores de ombro', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'flexOmbro', label:'Flexores de ombro', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'extOmbro', label:'Extensores de ombro', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'rotIntOmbro', label:'Rotadores internos de ombro', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'rotExtOmbro', label:'Rotadores externos de ombro', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'flexCotovelo', label:'Flexores de cotovelo', unidade:'kgf', side:true, direcao:'up', chart:true},
+         {key:'extCotovelo', label:'Extensores de cotovelo', unidade:'kgf', side:true, direcao:'up', chart:true},
        ]},
       {id:'perimetria', titulo:'Perimetria', desc:'Circunferência (cm). Acompanhar simetria.',
        campos:[
@@ -897,37 +900,44 @@ const BATERIAS = {
          {key:'perimBraco', label:'Braço', unidade:'cm', side:true, direcao:'up', chart:false},
        ]},
       {id:'fms', titulo:'FMS', desc:'Functional Movement Screen (0 a 21). Maior é melhor.', fms:true},
-      {id:'hop', titulo:'Hop Test', desc:'Salto unipodal para distância (cm). 3 tentativas por lado, o app calcula a média. Maior é melhor.',
+      {id:'hop', titulo:'Hop Test', desc:'4 variações de salto unipodal. 3 tentativas por lado, o app calcula a média. Distância em cm (maior é melhor); o 6-Meter é cronometrado em segundos (menor é melhor).',
        campos:[
-         {key:'hop', label:'Distância do salto', unidade:'cm', side:true, direcao:'up', chart:true, media:3},
+         {key:'hop', label:'Single Hop Test', unidade:'cm', side:true, direcao:'up', chart:true, media:3, relLabel:'Single Hop Test'},
+         {key:'tripleHop', label:'Triple Hop Test', unidade:'cm', side:true, direcao:'up', chart:true, media:3, relLabel:'Triple Hop Test'},
+         {key:'crossoverHop', label:'Crossover Hop Test', unidade:'cm', side:true, direcao:'up', chart:true, media:3, relLabel:'Crossover Hop Test'},
+         {key:'timedHop6m', label:'6-Meter Timed Hop Test', unidade:'s', side:true, direcao:'down', chart:true, media:3, relLabel:'6-Meter Timed Hop (tempo)'},
+       ]},
+      {id:'lunge', titulo:'Teste de Lunge (inclinômetro)', desc:'Amplitude de dorsiflexão no lunge, em graus (inclinômetro). Direito e esquerdo. Maior é melhor.',
+       campos:[
+         {key:'lungeInclin', label:'Lunge com inclinômetro', unidade:'°', side:true, direcao:'up', chart:true, relLabel:'Lunge (inclinômetro)'},
        ]},
       {id:'abdominal', titulo:'Teste abdominal (McGill)', desc:'Resistência isométrica dos flexores de tronco (segundos). Maior é melhor.',
        campos:[
-         {key:'abdominal', label:'Abdominal (tempo)', unidade:'s', side:false, direcao:'up', chart:true},
+         {key:'abdominal', label:'Abdominal (tempo)', unidade:'s', side:false, direcao:'up', chart:true, relLabel:'Abdominal — tempo'},
        ]},
       {id:'bess', titulo:'BESS', desc:'Balance Error Scoring System. Total de erros. Menor é melhor.',
        campos:[
-         {key:'bess', label:'Total de erros', unidade:'erros', side:false, direcao:'down', chart:true},
+         {key:'bess', label:'Total de erros', unidade:'erros', side:false, direcao:'down', chart:true, relLabel:'BESS — Total de erros'},
        ]},
       {id:'sorensen', titulo:'Teste de Sorensen (lombar)', desc:'Resistência dos extensores lombares (segundos). Maior é melhor.',
        campos:[
-         {key:'sorensen', label:'Lombar / Sorensen (tempo)', unidade:'s', side:false, direcao:'up', chart:true},
+         {key:'sorensen', label:'Lombar / Sorensen (tempo)', unidade:'s', side:false, direcao:'up', chart:true, relLabel:'Sorensen — tempo lombar'},
        ]},
       {id:'msebt', titulo:'mSEBT', desc:'Star Excursion modificado (cm). 3 tentativas por direção, média automática. Informe o comprimento do membro para o composto (%).',
        campos:[
          {key:'comprimentoMembro', label:'Comprimento do membro (EIAS ao maléolo medial)', unidade:'cm', side:true, direcao:null, chart:false},
-         {key:'sebtAnt', label:'Anterior', unidade:'cm', side:true, direcao:'up', chart:false, media:3},
-         {key:'sebtPM', label:'Posteromedial', unidade:'cm', side:true, direcao:'up', chart:false, media:3},
-         {key:'sebtPL', label:'Posterolateral', unidade:'cm', side:true, direcao:'up', chart:false, media:3},
-         {key:'sebtComp', label:'Composto', unidade:'%', side:true, direcao:'up', chart:true, computed:true},
+         {key:'sebtAnt', label:'Anterior', unidade:'cm', side:true, direcao:'up', chart:true, media:3, relLabel:'Y Balance — Anterior'},
+         {key:'sebtPM', label:'Posteromedial', unidade:'cm', side:true, direcao:'up', chart:true, media:3, relLabel:'Y Balance — Posteromedial'},
+         {key:'sebtPL', label:'Posterolateral', unidade:'cm', side:true, direcao:'up', chart:true, media:3, relLabel:'Y Balance — Posterolateral'},
+         {key:'sebtComp', label:'Composto', unidade:'%', side:true, direcao:'up', chart:true, computed:true, relLabel:'Y Balance — Composto'},
        ]},
       {id:'slbtBridge', titulo:'Single Leg Bridge Test (ponte unilateral)', desc:'Resistência de isquiotibiais e glúteos. Repetições até a falha. Maior é melhor.',
        campos:[
-         {key:'slbtBridge', label:'Repetições', unidade:'rep', side:true, direcao:'up', chart:true},
+         {key:'slbtBridge', label:'Repetições', unidade:'rep', side:true, direcao:'up', chart:true, relLabel:'SLBT ponte — Repetições'},
        ]},
       {id:'slbtBalance', titulo:'Single Leg Balance Test (equilíbrio unipodal)', desc:'Equilíbrio e propriocepção (segundos). Maior é melhor.',
        campos:[
-         {key:'slbtBalance', label:'Tempo de equilíbrio', unidade:'s', side:true, direcao:'up', chart:true},
+         {key:'slbtBalance', label:'Tempo de equilíbrio', unidade:'s', side:true, direcao:'up', chart:true, relLabel:'SLBT equilíbrio — Tempo'},
        ]},
     ]
   },
@@ -937,13 +947,13 @@ const BATERIAS = {
       {id:'adams', titulo:'Teste de Adams', desc:'Triagem de escoliose. Gibosidade em mm (menor é melhor).',
        campos:[
          {key:'adamsResultado', label:'Resultado', tipo:'select', opcoes:['Negativo','Positivo'], side:false, direcao:null, chart:false},
-         {key:'adamsGibosidade', label:'Gibosidade', unidade:'mm', side:false, direcao:'down', chart:true},
+         {key:'adamsGibosidade', label:'Gibosidade', unidade:'mm', side:false, direcao:'down', chart:true, relLabel:'Adams — Gibosidade'},
          {key:'adamsRegiao', label:'Região', tipo:'select', opcoes:['—','Torácica','Toracolombar','Lombar'], side:false, direcao:null, chart:false},
        ]},
       {id:'fms', titulo:'FMS', desc:'Functional Movement Screen (0 a 21). Maior é melhor.', fms:true},
       {id:'hop', titulo:'Hop Test', desc:'Salto unipodal para distância (cm). 3 tentativas por lado, o app calcula a média. Maior é melhor.',
        campos:[
-         {key:'hop', label:'Distância do salto', unidade:'cm', side:true, direcao:'up', chart:true, media:3},
+         {key:'hop', label:'Distância do salto', unidade:'cm', side:true, direcao:'up', chart:true, media:3, relLabel:'Hop Test — Distância do salto'},
        ]},
       {id:'trendelenburg', titulo:'Trendelenburg', desc:'Estabilidade do quadril em apoio unipodal.',
        campos:[
@@ -956,27 +966,27 @@ const BATERIAS = {
     blocos:[
       {id:'tc6', titulo:'TC6 (Teste de Caminhada de 6 min)', desc:'Distância percorrida (metros). Maior é melhor.',
        campos:[
-         {key:'tc6', label:'Distância', unidade:'m', side:false, direcao:'up', chart:true},
+         {key:'tc6', label:'Distância', unidade:'m', side:false, direcao:'up', chart:true, relLabel:'TC6 — Distância'},
        ]},
       {id:'sentarLevantar', titulo:'Sentar e levantar', desc:'Repetições em 30 segundos. Maior é melhor.',
        campos:[
-         {key:'sentarLevantar', label:'Repetições (30s)', unidade:'rep', side:false, direcao:'up', chart:true},
+         {key:'sentarLevantar', label:'Repetições (30s)', unidade:'rep', side:false, direcao:'up', chart:true, relLabel:'Sentar e levantar — Repetições (30s)'},
        ]},
       {id:'sentarAlcancar', titulo:'Sentar e alcançar', desc:'Flexibilidade (cm). Maior é melhor.',
        campos:[
-         {key:'sentarAlcancar', label:'Alcance', unidade:'cm', side:false, direcao:'up', chart:true},
+         {key:'sentarAlcancar', label:'Alcance', unidade:'cm', side:false, direcao:'up', chart:true, relLabel:'Sentar e alcançar — Alcance'},
        ]},
       {id:'bess', titulo:'BESS', desc:'Balance Error Scoring System. Total de erros. Menor é melhor.',
        campos:[
-         {key:'bess', label:'Total de erros', unidade:'erros', side:false, direcao:'down', chart:true},
+         {key:'bess', label:'Total de erros', unidade:'erros', side:false, direcao:'down', chart:true, relLabel:'BESS — Total de erros'},
        ]},
       {id:'flexaoCotovelo', titulo:'Flexão de cotovelo', desc:'Repetições em 30 segundos. Maior é melhor.',
        campos:[
-         {key:'flexaoCotovelo', label:'Repetições (30s)', unidade:'rep', side:true, direcao:'up', chart:true},
+         {key:'flexaoCotovelo', label:'Repetições (30s)', unidade:'rep', side:true, direcao:'up', chart:true, relLabel:'Flexão de cotovelo — Repetições (30s)'},
        ]},
       {id:'panturrilha', titulo:'Teste de panturrilha', desc:'Heel rise: elevações de calcanhar. Maior é melhor.',
        campos:[
-         {key:'panturrilha', label:'Elevações', unidade:'rep', side:true, direcao:'up', chart:true},
+         {key:'panturrilha', label:'Elevações', unidade:'rep', side:true, direcao:'up', chart:true, relLabel:'Heel rise — Elevações'},
        ]},
     ]
   }
@@ -1548,11 +1558,12 @@ function metricasDoGrupo(grupo){
     }
     (b.campos||[]).forEach(c=>{
       if(!c.chart) return;
+      const rl=(c.relLabel||c.label);
       if(c.side){
-        out.push({key:c.key+'_dir', label:c.label+' (Dir)', unidade:c.unidade, direcao:c.direcao, side:false, bloco:b.id});
-        out.push({key:c.key+'_esq', label:c.label+' (Esq)', unidade:c.unidade, direcao:c.direcao, side:false, bloco:b.id});
+        out.push({key:c.key+'_dir', label:rl+' (Dir)', unidade:c.unidade, direcao:c.direcao, side:false, bloco:b.id});
+        out.push({key:c.key+'_esq', label:rl+' (Esq)', unidade:c.unidade, direcao:c.direcao, side:false, bloco:b.id});
       } else {
-        out.push({key:c.key, label:c.label, unidade:c.unidade, direcao:c.direcao, side:false, bloco:b.id});
+        out.push({key:c.key, label:rl, unidade:c.unidade, direcao:c.direcao, side:false, bloco:b.id});
       }
     });
   });
@@ -1708,7 +1719,7 @@ function metricasRelatorio(grupo){
     if(b.fms){ out.push({base:'__fmsTotal', label:'FMS (total)', unidade:'pts', direcao:'up', fms:true, sides:null}); return; }
     (b.campos||[]).forEach(c=>{
       if(!c.chart) return;
-      out.push({base:c.key, label:c.label, unidade:c.unidade, direcao:c.direcao, sides:c.side?['dir','esq']:null});
+      out.push({base:c.key, label:(c.relLabel||c.label), unidade:c.unidade, direcao:c.direcao, sides:c.side?['dir','esq']:null});
     });
   });
   return out;
@@ -2019,32 +2030,47 @@ function buildMapaCorporal(p, avals){
   </div>`;
 }
 /* silhueta anterior estilizada; cores por região */
+/* silhueta humana anterior; regiões coloridas: braços, coxas, panturrilhas */
 function svgCorpo(c){
-  const neu='#cdd8e4', st='#aebccd';
-  return `<svg class="chart" viewBox="0 0 300 540" preserveAspectRatio="xMidYMid meet" style="max-width:260px">
-    <!-- cabeca e tronco -->
-    <circle cx="150" cy="48" r="30" fill="${neu}" stroke="${st}"/>
-    <rect x="138" y="76" width="24" height="16" fill="${neu}" stroke="${st}"/>
-    <path d="M104,96 Q150,84 196,96 L210,150 L186,250 L114,250 L90,150 Z" fill="${neu}" stroke="${st}" stroke-width="1.5"/>
-    <!-- bracos -->
-    <rect x="74" y="104" width="24" height="150" rx="12" fill="${c.braco}" stroke="${st}"/>
-    <rect x="202" y="104" width="24" height="150" rx="12" fill="${c.braco}" stroke="${st}"/>
-    <circle cx="86" cy="266" r="13" fill="${c.braco}" stroke="${st}"/>
-    <circle cx="214" cy="266" r="13" fill="${c.braco}" stroke="${st}"/>
-    <!-- quadril -->
-    <path d="M114,250 L186,250 L182,300 L118,300 Z" fill="${neu}" stroke="${st}"/>
-    <!-- coxas -->
-    <rect x="120" y="296" width="30" height="120" rx="15" fill="${c.coxa}" stroke="${st}"/>
-    <rect x="150" y="296" width="30" height="120" rx="15" fill="${c.coxa}" stroke="${st}"/>
-    <!-- panturrilhas -->
-    <rect x="124" y="416" width="24" height="104" rx="12" fill="${c.panturrilha}" stroke="${st}"/>
-    <rect x="152" y="416" width="24" height="104" rx="12" fill="${c.panturrilha}" stroke="${st}"/>
-    <!-- pes -->
-    <ellipse cx="134" cy="528" rx="15" ry="9" fill="${neu}" stroke="${st}"/>
-    <ellipse cx="166" cy="528" rx="15" ry="9" fill="${neu}" stroke="${st}"/>
-    <!-- rotulos D / E -->
-    <text x="56" y="100" font-size="15" font-weight="800" fill="#1f5fa8">D</text>
-    <text x="236" y="100" font-size="15" font-weight="800" fill="#2e83d4">E</text>
+  const neu='#cdd8e4', st='#9fb0c3', sw='1.5';
+  return `<svg class="chart" viewBox="0 0 300 560" preserveAspectRatio="xMidYMid meet" style="max-width:250px">
+    <!-- cabeça e pescoço -->
+    <circle cx="150" cy="40" r="25" fill="${neu}" stroke="${st}" stroke-width="${sw}"/>
+    <path d="M141,62 L159,62 L159,82 L141,82 Z" fill="${neu}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- tronco + pelve (neutro) -->
+    <path d="M110,104 C108,92 120,82 132,82 L168,82 C180,82 192,92 190,104
+      L184,150 C182,176 180,206 172,238 L170,250
+      C176,270 182,286 182,302 L118,302 C118,286 124,270 130,250
+      L128,238 C120,206 118,176 116,150 Z" fill="${neu}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- braço direito (lado do paciente / esquerda da figura) -->
+    <path d="M112,100 C100,100 94,112 92,126 L84,210 C82,232 86,250 96,254
+      C104,256 108,248 108,236 L112,200 L118,150 L118,120 C118,108 116,102 112,100 Z"
+      fill="${c.braco}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- braço esquerdo -->
+    <path d="M188,100 C200,100 206,112 208,126 L216,210 C218,232 214,250 204,254
+      C196,256 192,248 192,236 L188,200 L182,150 L182,120 C182,108 184,102 188,100 Z"
+      fill="${c.braco}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- coxa direita -->
+    <path d="M122,304 L148,304 L146,408 L130,408 C122,408 121,398 122,380 L122,330
+      C121,314 121,308 122,304 Z" fill="${c.coxa}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- coxa esquerda -->
+    <path d="M178,304 L152,304 L154,408 L170,408 C178,408 179,398 178,380 L178,330
+      C179,314 179,308 178,304 Z" fill="${c.coxa}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- joelhos (neutro) -->
+    <circle cx="137" cy="408" r="9" fill="${neu}" stroke="${st}" stroke-width="${sw}"/>
+    <circle cx="163" cy="408" r="9" fill="${neu}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- panturrilha direita -->
+    <path d="M130,412 L146,412 L145,474 C145,498 142,510 136,512 C130,513 126,508 126,498
+      L128,450 C128,428 129,420 130,412 Z" fill="${c.panturrilha}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- panturrilha esquerda -->
+    <path d="M170,412 L154,412 L155,474 C155,498 158,510 164,512 C170,513 174,508 174,498
+      L172,450 C172,428 171,420 170,412 Z" fill="${c.panturrilha}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- pés (neutro) -->
+    <path d="M126,510 C126,524 130,532 136,532 C142,532 144,524 143,514 Z" fill="${neu}" stroke="${st}" stroke-width="${sw}"/>
+    <path d="M174,510 C174,524 170,532 164,532 C158,532 156,524 157,514 Z" fill="${neu}" stroke="${st}" stroke-width="${sw}"/>
+    <!-- rótulos D / E -->
+    <text x="58" y="150" font-size="16" font-weight="800" fill="#1f5fa8">D</text>
+    <text x="230" y="150" font-size="16" font-weight="800" fill="#2e83d4">E</text>
   </svg>`;
 }
 
